@@ -11,7 +11,7 @@ interface jou {
   Description: string;
   date: string;
   fullJournal: string;
-  journalImg: string;
+  journalImg: string[];
 }
 
 export default function Fulljournal() {
@@ -69,7 +69,7 @@ export default function Fulljournal() {
         {journal?.title}
       </p>
       <img
-        src={journal?.journalImg}
+        src={journal?.journalImg[0]}
         alt=""
         className="max-h-[400px] w-fit mt-11 "
       />

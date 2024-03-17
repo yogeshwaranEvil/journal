@@ -10,6 +10,8 @@ import About from "./components/About";
 import Home from "./components/Home";
 import Journal from "./components/journal";
 import Fulljournal from "./components/Fulljournal";
+import All from "./components/All";
+import Publish from "./components/Publish";
 
 interface ChildProps {
   onChange: (newValue: boolean) => void;
@@ -114,7 +116,9 @@ function App() {
       </> )}
       <Routes>
       <Route path="/fulljournal" element={<Fulljournal />} />
-          <Route path="/about" element={<About />} />
+      <Route path="/Alljournal" element={<All></All>} />
+      <Route path="/publish" element={<Publish></Publish>}/>
+
       </Routes>
     </Router>
   );
