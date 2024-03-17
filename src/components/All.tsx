@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect} from "react";
+import { useEffect } from "react";
 import face from "../assets/facebook.svg";
 import twe from "../assets/twitter.svg";
 import linkin from "../assets/linked.svg";
@@ -35,7 +35,8 @@ export default function All() {
         setJournal(data);
       });
   }, []);
-
+  
+  console.log(journal)
   return (
     <div className="  flex flex-col justify-center items-center  bg-[#ffffff]">
       <div className=" h-24 border-b-[1px] border-[#c9f570] flex flex-col w-full bg-white">
@@ -75,50 +76,45 @@ export default function All() {
         </div>
       </div>
 
+      
       {journal.map((Journal, index) => (
         <>
-          <div
-            key={index}
-            className=" border-b-[1px]  border-[#000000]   h-[520px] px-32 py-10 w-full"
-          >
-            <div className="h-full w-full bg-[#f0f0f1] rounded-lg border-[1px] border-[#d3cece] flex flex-row justify-between items-center py-2 gap-3 px-2">
-              <div className="bg-white h-full w-1/2 flex flex-col items-center justify-center">
-                {" "}
-                <p className="mt-4">{Journal.title}</p>
-                <Carousel className="w-[400px] ">
-                  <CarouselContent>
-                    {Journal.journalImg.map((img, index) => (
-                      <CarouselItem key={index}>
-                        <div className="p-1">
-                          <Card>
-                            <CardContent className="flex aspect-square items-center justify-center p-6">
-                              <img
-                                src={img}
-                                className="w-full h-full object-cover rounded-lg"
-                              />
-                            </CardContent>
-                          </Card>
-                        </div>
-                      </CarouselItem>
-                    ))}
-                  </CarouselContent>
-                  <CarouselPrevious />
-                  <CarouselNext />
-                </Carousel>
-              </div>
-              <div className="bg-white h-full w-1/2 flex flex-col items-center justify-center">
-                <p className=" font-light pl-6 mt-6 text-center align-middle px-10 leading-loose tracking-wider">
-                  {Journal.Description}
-                </p>
-                <button
-                  className=" bg-neutral-900 text-white px-6 mt-10  min-h-8 min-w-12  rounded-full font-light text-xs"
-                  onClick={() => navigate(`/fulljournal/?id=${Journal.id}`)}
-                >
-                  View Full
-                </button>
-              </div>
+       <div key={index} className=" border-b-[1px]  border-[#000000]   h-[520px] px-32 py-10 w-full">
+        <div className="h-full w-full bg-[#f0f0f1] rounded-lg border-[1px] border-[#d3cece] flex flex-row justify-between items-center py-2 gap-3 px-2">
+          <div className="bg-white h-full w-1/2 flex flex-col items-center justify-center"> <p className="mt-4">{Journal.title}</p>
+          
+          
+          <Carousel className="w-[400px] ">
+      <CarouselContent>
+        {Journal.journalImg.map((img, index) => (
+          <CarouselItem key={index}>
+            <div className="p-1">
+              <Card>
+                <CardContent className="flex aspect-square items-center justify-center p-6">
+                    <img src={img} className="w-full h-full object-cover rounded-lg" />
+                </CardContent>
+              </Card>
             </div>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <CarouselPrevious />
+      <CarouselNext />
+    </Carousel>
+
           </div>
+          <div className="bg-white h-full w-1/2 flex flex-col items-center justify-center"><p className=" font-light pl-6 mt-6 text-center align-middle px-10 leading-loose tracking-wider">
+                        {Journal.Description}
+                      </p><button
+                        className=" bg-neutral-900 text-white px-6 mt-10  min-h-8 min-w-12  rounded-full font-light text-xs"
+                        onClick={() =>
+                          navigate(`/fulljournal/?id=${Journal.id}`)
+                        }
+                      >
+                        View Full
+                      </button></div>
+        </div>
+      </div>
         </>
       ))}
     </div>

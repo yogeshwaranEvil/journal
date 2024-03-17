@@ -12,6 +12,15 @@ import Journal from "./components/journal";
 import Fulljournal from "./components/Fulljournal";
 import All from "./components/All";
 import Publish from "./components/Publish";
+import { withAuthenticationRequired } from '@auth0/auth0-react';
+
+
+
+const ProtectedRoute = ({ component, ...args }: any) => {
+  const Component = withAuthenticationRequired(component, args);
+  return <Component />;
+};
+
 
 interface ChildProps {
   onChange: (newValue: boolean) => void;
@@ -33,7 +42,6 @@ function MyComponent({onChange}: ChildProps) {
   );
 }
 function App() {
-
   const [showNav, setShowNav] = useState(true);
   const handelShownav  = (newValue: boolean) => {
     setShowNav(newValue);
@@ -57,13 +65,13 @@ function App() {
               yogeshwaran.rlcse2022.sece.ac.in
             </a>
             <div className=" h-fit flex flex-row gap-3 items-center">
-              <a>
+              <a href="">
                 <img src={face} className=" size-7"></img>
               </a>
-              <a>
+              <a href="https://twitter.com/CseYogeshw513">
                 <img src={twe} className="  size-6"></img>
               </a>
-              <a>
+              <a href="https://www.linkedin.com/in/yogeshwaran-r-cse-858314296/">
                 <img src={linkin} className=" size-6"></img>
               </a>
             </div>
@@ -96,9 +104,10 @@ function App() {
               >
                 Journal
               </Link>
-              <button className=" bg-neutral-900 text-white px-6   min-h-8 min-w-12  rounded-full font-light text-xs">
+              <Link to="/publish" className=" bg-neutral-900 text-white px-6   min-h-8 min-w-12  rounded-full font-light text-xs" 
+>
                 Login
-              </button>
+              </Link>
             </div>
           </nav>
         </div>
@@ -117,7 +126,8 @@ function App() {
       <Routes>
       <Route path="/fulljournal" element={<Fulljournal />} />
       <Route path="/Alljournal" element={<All></All>} />
-      <Route path="/publish" element={<Publish></Publish>}/>
+      <Route path="/publish" element={<ProtectedRoute  component={Publish} />}/>
+      
 
       </Routes>
     </Router>
