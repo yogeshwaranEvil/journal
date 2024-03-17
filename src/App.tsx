@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,Link as LL } from "react-router-dom";
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-scroll";
@@ -12,6 +12,7 @@ import Journal from "./components/journal";
 import Fulljournal from "./components/Fulljournal";
 import All from "./components/All";
 import Publish from "./components/Publish";
+import upload from "./assets/upload.svg";
 import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 
@@ -80,6 +81,12 @@ function App() {
           <nav className="flex flex-row px-32 items-center justify-between h-14 bg-white">
             <img src={jf}></img>
             <div className=" flex flex-row gap-4 items-center">
+           
+            <LL to="/publish/?id=23"
+            className=" cursor-pointer bg-[#c9f570] text-black px-6   min-h-8 min-w-12  rounded-full font-light text-xs flex flex-row items-center justfy-between"
+          >
+            Publish<img src={upload} className=" size-8 ml-2"></img>
+          </LL>
               <Link
                 to="home"
                 smooth={true}
@@ -104,10 +111,11 @@ function App() {
               >
                 Journal
               </Link>
-              <Link to="/publish" className=" bg-neutral-900 text-white px-6   min-h-8 min-w-12  rounded-full font-light text-xs" 
+              
+              <LL to="/publish" className=" bg-neutral-900 text-white px-6  pt-2 min-h-8 min-w-12  rounded-full font-light text-xs cursor-pointer " 
 >
                 Login
-              </Link>
+              </LL>
             </div>
           </nav>
         </div>
