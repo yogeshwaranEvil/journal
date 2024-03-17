@@ -1,4 +1,3 @@
-import React from 'react'
 import bg from "../assets/bg.svg";
 
 export default function Home() {
